@@ -54,6 +54,7 @@ namespace Asteroids
 
         }
 
+        //переопределил для звезды движение, начинается движение от правого конца экрана.
         public override void Update()
         {
             Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);

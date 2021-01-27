@@ -65,6 +65,7 @@ namespace Asteroids
         {
             objs = new BaseObject[40];
     
+            //изменил создание звезд, чтобы они летели справа налево
             for (int i = 0; i < 40; i++)
             {
                 objs[i] = new Star(new Point(Width, Random.Next(0, Height)), new Point(i*-Random.Next(1,2), 0), new Size(20, 20));
