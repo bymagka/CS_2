@@ -25,7 +25,7 @@ namespace Asteroids
         private void btnStart_Click(object sender, EventArgs e)
         {
             Form form = new Form();
-            form.Width = 1024;
+            form.Width = 1000;
             form.Height = 768;
             form.FormClosed += Form_FormClosed;
             Game.Init(form);

@@ -7,11 +7,19 @@ using System.Threading.Tasks;
 
 namespace Asteroids
 {
-    class BaseObject
+    public interface ICollision
+    {
+        bool IsCollision(ICollision obj);
+        Rectangle rect { get; }
+    }
+
+    abstract class BaseObject : ICollision
     {
         protected Point Pos { get; set; }//X,Y
         protected Point Dir { get; set; }//X,Y
         protected Size Size { get; set; }
+
+        public Rectangle rect => new Rectangle(Pos,Size);
 
         public BaseObject()
         {
@@ -21,6 +29,9 @@ namespace Asteroids
         }
         public BaseObject(Point pos, Point dir, Size size)
         {
+            if (pos.X < 0 || pos.X > Game.Width || pos.Y < 0 || pos.Y > Game.Height || dir.X > 1000 || dir.Y > 1000)
+                throw new MyException();
+
             this.Pos = pos;
             this.Dir = dir;
             this.Size = size;
@@ -31,14 +42,9 @@ namespace Asteroids
             Game.Buffer.Graphics.FillEllipse(Brushes.White, Pos.X, Pos.Y, Size.Width, Size.Height);
         }
 
-        public virtual void Update()
-        {
-            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
-            if (Pos.X < 0 || Pos.X > Game.Width)
-                Dir = new Point(-Dir.X, Dir.Y);
-            if (Pos.Y < 0 || Pos.Y > Game.Height)
-                Dir = new Point(Dir.X, -Dir.Y);
-        }
+        public abstract void Update();
+
+        public abstract bool IsCollision(ICollision obj);
     }
 
     class Star: BaseObject
@@ -66,7 +72,79 @@ namespace Asteroids
         {
             Game.Buffer.Graphics.DrawImage(Image, Pos);
         }
+
+        public override bool IsCollision(ICollision obj)
+        {
+            return false;
+        }
     }
 
+    class Bullet : BaseObject
+    {
+
+   
+
+        public override void Draw()
+        {
+            Game.Buffer.Graphics.FillRectangle(Brushes.Red, Pos.X, Pos.Y, Size.Width, Size.Height);
+        }
+
+        public override bool IsCollision(ICollision obj)
+        {
+            return rect.IntersectsWith(obj.rect) && (obj is Asteroid);
+        }
+
+
+
+        public Bullet(Point pos, Point dir, Size size) : base(pos, dir, size)
+        {
+
+        }
+        public override void Update()
+        {
+            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
+            if (Pos.X > Game.Width)
+                Pos = new Point(0, Game.Height/2);
+        }
+    }
+
+    class Asteroid : BaseObject
+    {
+        
+        static Image Image { get; } = Image.FromFile("Images\\Asteroid.png");
+
+
+
+        public Asteroid(Point pos, Point dir, Size size) : base(pos, dir, size)
+        {
+            
+        }
+
+        //переопределил для звезды движение, начинается движение от правого конца экрана.
+        public override void Update()
+        {
+            Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
+            if (Pos.X < -Size.Width)
+                Pos = new Point(Game.Width, Game.Random.Next(0, Game.Height));
+        }
+
+        public override void Draw()
+        {
+            Game.Buffer.Graphics.DrawImage(Image, Pos);
+        }
+
+        public override bool IsCollision(ICollision obj)
+        {
+            return rect.IntersectsWith(obj.rect);
+        }
+    }
+
+    public class MyException : ApplicationException
+    {
+        public MyException()
+        {
+            Console.WriteLine("Bad parameters");
+        }
+    }
 
 }

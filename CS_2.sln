@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{BC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asteroids", "Asteroids\Asteroids.csproj", "{59E1C61F-4A18-4241-BD57-93345EACF08E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employees", "Employees\Employees.csproj", "{7BA0B74D-7A15-45D4-8EC6-C384C5B96728}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{59E1C61F-4A18-4241-BD57-93345EACF08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E1C61F-4A18-4241-BD57-93345EACF08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E1C61F-4A18-4241-BD57-93345EACF08E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA0B74D-7A15-45D4-8EC6-C384C5B96728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA0B74D-7A15-45D4-8EC6-C384C5B96728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA0B74D-7A15-45D4-8EC6-C384C5B96728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA0B74D-7A15-45D4-8EC6-C384C5B96728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{59E1C61F-4A18-4241-BD57-93345EACF08E} = {BC63D103-9947-4C9F-9463-9D899CB583CF}
+		{7BA0B74D-7A15-45D4-8EC6-C384C5B96728} = {BC63D103-9947-4C9F-9463-9D899CB583CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0065EDDB-83F1-4E39-8E5E-13ED9EFC4F5D}

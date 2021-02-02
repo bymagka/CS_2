@@ -17,11 +17,41 @@ namespace Asteroids
         // Ширина и высота игрового поля
 
         static public Random Random { get; } = new Random();
-        static public int Width { get; private set; }
-        static public int Height { get; private set; }
+
+        //4. Сделать проверку на задание размера экрана в классе Game. 
+        static int width;
+        static public int Width 
+        { 
+            get 
+            {
+                return width;
+            }
+            private set
+            {
+                if (value > 1000) throw new ArgumentOutOfRangeException("Width can't be more 1000");
+                width = value;
+            } 
+        }
+
+        static int height;
+        static public int Height
+        {
+            get
+            {
+                return height;
+            }
+            private set
+            {
+                if (value > 1000) throw new ArgumentOutOfRangeException("Height can't be more 1000");
+                height = value;
+            }
+        }
+
         static public Image background = Image.FromFile("Images\\fon.jpg");
 
         static public BaseObject[] objs;
+
+        static public Bullet bullet;
 
         static Timer timer = new Timer();
 
@@ -63,14 +93,33 @@ namespace Asteroids
 
         static void Load()
         {
+
             objs = new BaseObject[40];
-    
-            //изменил создание звезд, чтобы они летели справа налево
-            for (int i = 0; i < 40; i++)
+
+            try
             {
-                objs[i] = new Star(new Point(Width, Random.Next(0, Height)), new Point(i*-Random.Next(1,2), 0), new Size(20, 20));
-               
+                bullet = new Bullet(new Point(0, Height / 2), new Point(25, 0), new Size(10, 5));
+
+
+                //изменил создание звезд, чтобы они летели справа налево
+                for (int i = 0; i < 40; i++)
+                {
+                    objs[i] = new Star(new Point(Width, Random.Next(0, Height)), new Point(i * -Random.Next(1, 2), 0), new Size(20, 20));
+
+                }
+
+                //добавление астероидов
+                for (int i = 0; i < 10; i++)
+                {
+                    objs[i] = new Asteroid(new Point(Width, Random.Next(0, Height)), new Point(i * -Random.Next(1, 2), 0), new Size(90, 90));
+
+                }
             }
+            catch (MyException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
 
         }
 
@@ -83,12 +132,26 @@ namespace Asteroids
             {
                 obj.Draw();
             }
+            bullet.Draw();
             Buffer.Render();
         }
         static public void Update()
         {
-            foreach (var obj in objs)
-                obj.Update();
+            
+            for (int i = 0; i < objs.Length; i++)
+            {
+                objs[i].Update();
+
+                //если столкновение пули и астероида, то ставим на начальные позиции объекты
+                if (bullet.IsCollision(objs[i]))
+                {
+                    bullet = new Bullet(new Point(0, Height / 2), new Point(25, 0), new Size(10, 5));
+                    objs[i] = new Asteroid(new Point(Width, Random.Next(0, Height)), new Point(i * -Random.Next(1, 2), 0), new Size(85, 85));
+                }
+            }
+            bullet.Update();
+
+
         }
 
     }
