@@ -71,7 +71,10 @@ namespace Asteroids
 
         static public BaseObject[] objs;
 
-        static public Bullet bullet;
+        static List<Bullet> bullets = new List<Bullet>();
+
+        static List<Asteroid> asteroids = new List<Asteroid>();
+        static int asteroidsCount = 10;
 
         static public Ship ship;
 
@@ -119,7 +122,7 @@ namespace Asteroids
             timerForMedicals.Tick += timerForMedicals_Tick;
             timerForMedicals.Start();
             // Запускаем консоль.
-            AllocConsole();
+            //AllocConsole();
             
         }
 
@@ -127,7 +130,7 @@ namespace Asteroids
 
         private static void From_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.ControlKey) bullet = new Bullet(new Point(ship.rect.X + 25, ship.rect.Y + 20), new Point(10, 0), new Size(10, 5));
+            if(e.KeyCode == Keys.ControlKey) bullets.Add(new Bullet(new Point(ship.rect.X + 25, ship.rect.Y + 20), new Point(10, 0), new Size(10, 5)));
             if (e.KeyCode == Keys.Up) ship.Up();
             if (e.KeyCode == Keys.Down) ship.Down();
             if (e.KeyCode == Keys.Left) ship.Left();
@@ -137,7 +140,7 @@ namespace Asteroids
 
         private static void Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FreeConsole();
+            //FreeConsole();
             logWriter.Close();
             timer.Stop();
         }
@@ -162,7 +165,7 @@ namespace Asteroids
 
             try
             {
-                bullet = new Bullet(new Point(ship.rect.X + 20, ship.rect.Y + 20), new Point(10, 0), new Size(10, 5));
+                bullets.Add(new Bullet(new Point(ship.rect.X + 20, ship.rect.Y + 20), new Point(10, 0), new Size(10, 5)));
 
 
                 //изменил создание звезд, чтобы они летели справа налево
@@ -172,12 +175,8 @@ namespace Asteroids
                     
                 }
 
-                //добавление астероидов
-                for (int i = 0; i < 10; i++)
-                {
-                    objs[i] = new Asteroid(new Point(Width, Random.Next(0, Height)), new Point(i * -Random.Next(1, 2), 0), new Size(70, 95));
+                InitiateAsteroids(asteroidsCount);
 
-                }
             }
             catch (MyException ex)
             {
@@ -185,6 +184,16 @@ namespace Asteroids
             }
           
 
+        }
+
+        static public void InitiateAsteroids(int n)
+        {
+            //добавление астероидов
+            for (int i = 0; i <= n; i++)
+            {
+                asteroids.Add(new Asteroid(new Point(Width, Random.Next(0, Height)), new Point((i == 0 ? 1 : i) * -Random.Next(1, 2), 0), new Size(70, 95)));
+
+            }
         }
 
         static public void Draw()
@@ -197,13 +206,23 @@ namespace Asteroids
                 obj.Draw();
             }
 
+            foreach (var obj in asteroids)
+            {
+                if (obj == null) continue;
+                obj.Draw();
+            }
+
             foreach (var obj in medicals)
             {
                 if (obj == null) continue;
                 obj.Draw();
             }
 
-            bullet.Draw();
+            foreach(var obj in bullets)
+            {
+                obj.Draw();
+            }
+
             ship?.Draw();
             
             if (ship != null)
@@ -214,23 +233,40 @@ namespace Asteroids
         static public void Update()
         {
           
-            for (int i = 0; i < objs.Length; i++)
+            foreach(var obj in objs)
             {
-                objs[i].Update();
+                obj.Update();
+            }
 
-                //если столкновение пули и астероида, то ставим на начальные позиции объекты
-                if (bullet.IsCollision(objs[i]))
+            for (int i = 0; i < asteroids.Count; i++)
+            {
+               
+                asteroids[i].Update();
+
+
+                for (int j = 0; j < bullets.Count; j++)
                 {
-                    bullet = new Bullet(new Point(ship.rect.X + 20, ship.rect.Y + 20), new Point(10, 0), new Size(10, 5));
-                    objs[i] = new Asteroid(new Point(Width, Random.Next(0, Height)), new Point(i * -Random.Next(1, 2), 0), new Size(70, 95));
-                    points++;
-                    saveLog($"Asteroid is burned! +1 pts. Total pts.: {points}");
+                    if (asteroids.Count == 0) continue;
+                    //если столкновение пули и астероида, то ставим на начальные позиции объекты
+                    if (bullets[j].IsCollision(asteroids[i]))
+                    {
+                        bullets.RemoveAt(j);
+                        j--;
 
+                        asteroids.RemoveAt(i);
+                        if (i != 0) i--;
+
+                        points++;
+                        saveLog($"Asteroid is burned! +1 pts. Total pts.: {points}");
+
+                    }
                 }
 
-                
-                if (ship.IsCollision(objs[i]))
+                if (asteroids.Count == 0) continue;
+
+                if (ship.IsCollision(asteroids[i]))
                 {
+                   
                     ship.shipEnergy--;
                     saveLog($"Ship is attacked! -1 hp. Total hp.: {ship.shipEnergy}");
                 }
@@ -256,9 +292,16 @@ namespace Asteroids
                
             }
 
-            bullet.Update();
+            foreach(Bullet bullet in bullets)
+                 bullet.Update();
 
 
+            if (asteroids.Count == 0)
+            {
+                asteroidsCount++;
+                InitiateAsteroids(asteroidsCount);
+
+            }
         }
 
         public static void Finish()

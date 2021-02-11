@@ -159,8 +159,7 @@ namespace Asteroids
         public override void Update()
         {
             Pos = new Point(Pos.X + Dir.X, Pos.Y + Dir.Y);
-            if (Pos.X > Game.Width)
-                Pos = new Point(Game.ship.rect.X + 20, Game.ship.rect.Y + 20);
+            
         }
     }
 
