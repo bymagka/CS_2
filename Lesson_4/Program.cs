@@ -59,7 +59,7 @@ namespace Lesson_4
                 Console.WriteLine($"{result.Count()} {result.Key}");
             }
 
-
+            //3 задание
             Task3A();
 
             Console.ReadLine();
