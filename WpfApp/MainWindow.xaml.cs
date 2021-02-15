@@ -28,7 +28,7 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
-            userDataGrid.ItemsSource = usersList;
+            //userDataGrid.ItemsSource = usersList;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace WpfApp
                     if(user.Length > 1)
                          usersList.Add(new User { UserName = user[0], UserPassword = user[1] });
                 }
-                userDataGrid.ItemsSource = usersList;
+                //userDataGrid.ItemsSource = usersList;
             }
         }
 
