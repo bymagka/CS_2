@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
+using System.Collections.ObjectModel;
 
 namespace WpfApp
 {
@@ -23,17 +24,21 @@ namespace WpfApp
     public partial class MainWindow : Window
     {
         StreamReader sr = null;
-        List<User> usersList = null;
+        ObservableCollection<User> usersList = null;
+        ObservableCollection<String> roleList = null;
+
         string database = String.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
-            //userDataGrid.ItemsSource = usersList;
+          
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            usersList = new List<User>();
+            usersList = new ObservableCollection<User>();
+            roleList = new ObservableCollection<String>();
 
             OpenFileDialog opf = new OpenFileDialog
             {
@@ -47,15 +52,33 @@ namespace WpfApp
             {
                 database = opf.FileName;
                 sr = new StreamReader(opf.FileName);
+                string line = String.Empty;
 
+                //users
+                while (true)
+                {
+                    if (sr.EndOfStream) break;
+
+                    line = sr.ReadLine();
+
+                    if (line.Equals("ROLES")) break;
+
+                    string[] user = line.Split(';');
+                   
+                    if(user.Length > 2)
+                         usersList.Add(new User { UserName = user[0], UserPassword = user[1], Role = user[2] });
+                }
+
+                //roles
                 while (!sr.EndOfStream)
                 {
-                    string[] user = sr.ReadLine().Split(';');
-                   
-                    if(user.Length > 1)
-                         usersList.Add(new User { UserName = user[0], UserPassword = user[1] });
+                    line = sr.ReadLine();
+
+                    roleList.Add(line);
                 }
-                //userDataGrid.ItemsSource = usersList;
+
+                userDataGrid.ItemsSource = usersList;
+                sr.Close();
             }
         }
 
@@ -67,7 +90,8 @@ namespace WpfApp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            usersList.Add(new User { UserName = tbUserName.Text, UserPassword = tbUserPassword.Text });
+            Window addForm = new AddForm(usersList,roleList);
+            addForm.ShowDialog();
             
         }
 
@@ -77,10 +101,38 @@ namespace WpfApp
 
             foreach (User item in usersList)
             {
-                sw.WriteLine($"{item.UserName};{item.UserPassword}");
+                sw.WriteLine($"{item.UserName};{item.UserPassword};{item.Role}");
+            }
+
+            sw.WriteLine("ROLES");
+
+            foreach (string item in roleList)
+            {
+                sw.WriteLine(item);
             }
 
             sw.Close();
+        }
+
+        private void btnAddRole_Click(object sender, RoutedEventArgs e)
+        {
+            Window addRoleForm = new AddRole(roleList);
+            addRoleForm.ShowDialog();
+
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var activeUser = userDataGrid.SelectedValue;
+
+            if (activeUser == null)
+                MessageBox.Show("You didn't select an item");
+            else
+            {
+                Window editForm = new EditForm((User)activeUser, roleList);
+                editForm.ShowDialog();
+            }
+
         }
     }
 }

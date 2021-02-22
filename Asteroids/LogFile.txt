@@ -1142,3 +1142,213 @@
 10.02.2021 12:06:49 Asteroid is created
 10.02.2021 12:06:50 Medical is created
 10.02.2021 12:06:50 Medical is created
+22.02.2021 10:33:40 Ship is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Star is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Asteroid is created
+22.02.2021 10:33:40 Medical is created
+22.02.2021 10:33:40 Medical is created
+22.02.2021 10:33:47 Asteroid is burned! +1 pts. Total pts.: 1
+22.02.2021 10:33:48 Asteroid is burned! +1 pts. Total pts.: 2
+22.02.2021 10:33:50 Asteroid is burned! +1 pts. Total pts.: 3
+22.02.2021 10:33:52 Asteroid is burned! +1 pts. Total pts.: 4
+22.02.2021 10:33:55 Asteroid is burned! +1 pts. Total pts.: 5
+22.02.2021 10:33:57 Asteroid is burned! +1 pts. Total pts.: 6
+22.02.2021 10:33:58 Asteroid is burned! +1 pts. Total pts.: 7
+22.02.2021 10:34:00 Asteroid is burned! +1 pts. Total pts.: 8
+22.02.2021 10:34:00 Asteroid is burned! +1 pts. Total pts.: 9
+22.02.2021 10:34:07 Asteroid is burned! +1 pts. Total pts.: 10
+22.02.2021 10:34:11 Ship is attacked! -1 hp. Total hp.: 99
+22.02.2021 10:34:11 Ship is attacked! -1 hp. Total hp.: 98
+22.02.2021 10:34:11 Ship is attacked! -1 hp. Total hp.: 97
+22.02.2021 10:34:11 Ship is attacked! -1 hp. Total hp.: 96
+22.02.2021 10:34:11 Ship is attacked! -1 hp. Total hp.: 95
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 94
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 93
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 92
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 91
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 90
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 89
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 88
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 87
+22.02.2021 10:34:12 Ship is attacked! -1 hp. Total hp.: 86
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 85
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 84
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 83
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 82
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 81
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 80
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 79
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 78
+22.02.2021 10:34:13 Ship is attacked! -1 hp. Total hp.: 77
+22.02.2021 10:34:25 Ship is attacked! -1 hp. Total hp.: 76
+22.02.2021 10:34:25 Ship is attacked! -1 hp. Total hp.: 75
+22.02.2021 10:34:25 Asteroid is burned! +1 pts. Total pts.: 11
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:25 Asteroid is created
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 74
+22.02.2021 10:34:30 Medical catched! +20 hp
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 93
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 92
+22.02.2021 10:34:30 Medical is created
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 91
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 90
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 89
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 88
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 87
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 86
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 85
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 84
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 83
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 82
+22.02.2021 10:34:30 Ship is attacked! -1 hp. Total hp.: 81
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 80
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 79
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 78
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 77
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 76
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 75
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 74
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 73
+22.02.2021 10:34:31 Ship is attacked! -1 hp. Total hp.: 72
+22.02.2021 10:34:32 Ship is attacked! -1 hp. Total hp.: 71
+22.02.2021 10:34:32 Ship is attacked! -1 hp. Total hp.: 70
+22.02.2021 10:34:32 Ship is attacked! -1 hp. Total hp.: 69
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 68
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 67
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 66
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 65
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 64
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 63
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 62
+22.02.2021 10:34:33 Ship is attacked! -1 hp. Total hp.: 61
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 60
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 59
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 58
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 57
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 56
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 55
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 54
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 53
+22.02.2021 10:34:34 Ship is attacked! -1 hp. Total hp.: 52
+22.02.2021 10:34:35 Ship is attacked! -1 hp. Total hp.: 51
+22.02.2021 10:34:38 Asteroid is burned! +1 pts. Total pts.: 12
+22.02.2021 10:34:38 Asteroid is burned! +1 pts. Total pts.: 13
+22.02.2021 10:34:39 Asteroid is burned! +1 pts. Total pts.: 14
+22.02.2021 10:34:39 Asteroid is burned! +1 pts. Total pts.: 15
+22.02.2021 10:34:41 Asteroid is burned! +1 pts. Total pts.: 16
+22.02.2021 10:34:45 Asteroid is burned! +1 pts. Total pts.: 17
+22.02.2021 10:34:49 Ship is attacked! -1 hp. Total hp.: 50
+22.02.2021 10:34:49 Ship is attacked! -1 hp. Total hp.: 49
+22.02.2021 10:34:49 Ship is attacked! -1 hp. Total hp.: 48
+22.02.2021 10:34:49 Ship is attacked! -1 hp. Total hp.: 47
+22.02.2021 10:34:49 Ship is attacked! -1 hp. Total hp.: 46
+22.02.2021 10:34:50 Ship is attacked! -1 hp. Total hp.: 45
+22.02.2021 10:34:50 Ship is attacked! -1 hp. Total hp.: 44
+22.02.2021 10:34:50 Ship is attacked! -1 hp. Total hp.: 43
+22.02.2021 10:34:50 Ship is attacked! -1 hp. Total hp.: 42
+22.02.2021 10:34:50 Ship is attacked! -1 hp. Total hp.: 41
+22.02.2021 10:34:52 Ship is attacked! -1 hp. Total hp.: 40
+22.02.2021 10:34:52 Ship is attacked! -1 hp. Total hp.: 39
+22.02.2021 10:34:52 Ship is attacked! -1 hp. Total hp.: 38
+22.02.2021 10:34:52 Ship is attacked! -1 hp. Total hp.: 37
+22.02.2021 10:34:52 Ship is attacked! -1 hp. Total hp.: 36
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 35
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 34
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 33
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 32
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 31
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 30
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 29
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 28
+22.02.2021 10:34:53 Ship is attacked! -1 hp. Total hp.: 27
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 26
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 25
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 24
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 23
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 22
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 21
+22.02.2021 10:34:56 Ship is attacked! -1 hp. Total hp.: 20
+22.02.2021 10:34:57 Ship is attacked! -1 hp. Total hp.: 19
+22.02.2021 10:34:59 Ship is attacked! -1 hp. Total hp.: 18
+22.02.2021 10:34:59 Ship is attacked! -1 hp. Total hp.: 17
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 16
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 15
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 14
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 13
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 12
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 11
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 10
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 9
+22.02.2021 10:35:00 Ship is attacked! -1 hp. Total hp.: 8
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 7
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 6
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 5
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 4
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 3
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 2
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 1
+22.02.2021 10:35:02 Ship is attacked! -1 hp. Total hp.: 0
+22.02.2021 10:35:02 Ship is dead!
+22.02.2021 10:35:02 Ship is dead!
+22.02.2021 10:35:02 Ship is dead!
+22.02.2021 10:35:02 Ship is dead!
+22.02.2021 10:35:02 Ship is dead!
