@@ -33,7 +33,7 @@ namespace WpfApp
         //адаптер
        SqlDataAdapter dataAdapter = new SqlDataAdapter();
         
-        string database = @"data source=(LocalDb)\MSSQLLocalDB;initial catalog=Passwords;integrated security=True;";
+        string database = @"data source=(LocalDb)\MSSQLLocalDB;AttachDbFileName = |DataDirectory|\Passwords.mdf;integrated security=True;";
 
         public MainWindow()
         {
