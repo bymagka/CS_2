@@ -158,25 +158,48 @@ namespace WpfApp
                 updateUsers.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
 
                 DataTable dtUpdateUsers = new DataTable();
-                dtUpdateUsers.Columns.Add("UserName");
-                dtUpdateUsers.Columns.Add("Password");
-                dtUpdateUsers.Columns.Add("Role");
-                dtUpdateUsers.Columns.Add("Id");
+
+                string selectQuery = "SELECT * FROM Users WHERE Id = @Id";
+             
 
                 foreach (User user in usersList)
-                {
-                   if(user.Id == 0)
+                { 
+                    if (user.Id == 0)
                     {
-                        dataAdapter.InsertCommand = insertUsers;
                         DataRow dr = dtUsers.NewRow();
                         dr["UserName"] = user.UserName;
                         dr["Password"] = user.UserPassword;
                         dr["Role"] = user.Role;
                         dr["Id"] = user.Id;
 
+                        dataAdapter.InsertCommand = insertUsers;
+                   
                         dtUsers.Rows.Add(dr);
 
                         dataAdapter.Update(dtUsers);
+                    }
+                    else
+                    {
+
+                        SqlCommand selectCommand = new SqlCommand(selectQuery,sqlConnection);
+                        selectCommand.Parameters.AddWithValue("@Id", user.Id);
+                        dataAdapter.SelectCommand = selectCommand;
+
+                        dataAdapter.Fill(dtUpdateUsers);
+                        
+                        dataAdapter.UpdateCommand = updateUsers;
+
+                       if(dtUpdateUsers.Rows.Count > 0)
+                        {
+                            DataRow elementRow = dtUpdateUsers.Rows[0];
+
+                            elementRow["UserName"] = user.UserName;
+                            elementRow["Password"] = user.UserPassword;
+                            elementRow["Role"] = user.Role;
+                            dataAdapter.Update(dtUpdateUsers);
+                        }
+
+                        
                     }
 
                 }
