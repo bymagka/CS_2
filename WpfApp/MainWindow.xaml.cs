@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WpfApp
 {
@@ -23,68 +25,70 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        StreamReader sr = null;
-        ObservableCollection<User> usersList = null;
-        ObservableCollection<String> roleList = null;
+        List<string> ExistingRoles = new List<string>();
 
-        string database = String.Empty;
+        ObservableCollection<User> usersList = new ObservableCollection<User>();
+        ObservableCollection<String> roleList = new ObservableCollection<String>();
+
+        //адаптер
+       SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        
+        string database = @"data source=(LocalDb)\MSSQLLocalDB;initial catalog=Passwords;integrated security=True;";
 
         public MainWindow()
         {
             InitializeComponent();
+
+            LoadData();
           
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoadData()
         {
-            usersList = new ObservableCollection<User>();
-            roleList = new ObservableCollection<String>();
-
-            OpenFileDialog opf = new OpenFileDialog
+            
+            using(SqlConnection sqlConnection = new SqlConnection(database))
             {
-                Filter = "CSV (*.csv)|*.csv",
-                FilterIndex = 1
-            };
+                string selectQuery = "SELECT * FROM Users";
 
-            opf.ShowDialog();
+                dataAdapter.SelectCommand = new SqlCommand(selectQuery,sqlConnection);
 
-            if (opf.FileName != String.Empty)
-            {
-                database = opf.FileName;
-                sr = new StreamReader(opf.FileName);
-                string line = String.Empty;
+                //пользователи
+                DataTable dt = new DataTable();
 
-                //users
-                while (true)
+                dataAdapter.Fill(dt);            
+
+                foreach(DataRow row in dt.Rows)
                 {
-                    if (sr.EndOfStream) break;
+                    User existingUser = new User { UserName = row["UserName"].ToString(), UserPassword = row["Password"].ToString(), Role = row["Role"].ToString(), Id = int.Parse(row["Id"].ToString()) };
+                    usersList.Add(existingUser);
 
-                    line = sr.ReadLine();
-
-                    if (line.Equals("ROLES")) break;
-
-                    string[] user = line.Split(';');
                    
-                    if(user.Length > 2)
-                         usersList.Add(new User { UserName = user[0], UserPassword = user[1], Role = user[2] });
                 }
+                
+                //роли
+                selectQuery = "SELECT * FROM Roles";
 
-                //roles
-                while (!sr.EndOfStream)
+                dataAdapter.SelectCommand = new SqlCommand(selectQuery, sqlConnection);
+
+                dataAdapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    line = sr.ReadLine();
-
-                    roleList.Add(line);
+                    roleList.Add(row["Name"].ToString());
+                    ExistingRoles.Add(row["Name"].ToString());
                 }
 
-                userDataGrid.ItemsSource = usersList;
-                sr.Close();
             }
+            userDataGrid.ItemsSource = usersList;
+
+
+
+
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
-            sr?.Close();
+            
             Close();
         }
 
@@ -97,21 +101,89 @@ namespace WpfApp
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            StreamWriter sw = new StreamWriter(database,false);
 
-            foreach (User item in usersList)
+
+            using (SqlConnection sqlConnection = new SqlConnection(database))
             {
-                sw.WriteLine($"{item.UserName};{item.UserPassword};{item.Role}");
+                //роли
+                string updateQuery = @"INSERT INTO Roles (Name) VALUES (@Name)";
+
+                SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
+                updateCommand.Parameters.Add("@Name", SqlDbType.NVarChar, -1, "Name");
+                DataTable dtRoles = new DataTable();
+                dtRoles.Columns.Add("Name");
+
+                foreach (string role in roleList)
+                {
+                    if(ExistingRoles.Find(x => x == role) == null)
+                    {
+                      
+                        dataAdapter.InsertCommand = updateCommand;
+                        DataRow dr = dtRoles.NewRow();
+                        dr["Name"] = role;
+
+                        dtRoles.Rows.Add(dr);
+
+                        dataAdapter.Update(dtRoles);
+
+                        ExistingRoles.Add(role);
+                    }
+                    
+
+                }
+
+                //users
+                //insert
+                string insertQueryUsers = @"INSERT INTO Users (UserName,Password,Role) VALUES (@UserName,@Password,@Role); SET @ID = @@IDENTITY";
+
+                SqlCommand insertUsers = new SqlCommand(insertQueryUsers, sqlConnection);
+                insertUsers.Parameters.Add("@UserName", SqlDbType.NVarChar, -1, "UserName");
+                insertUsers.Parameters.Add("@Password", SqlDbType.NVarChar, -1, "Password");
+                insertUsers.Parameters.Add("@Role", SqlDbType.NVarChar, -1, "Role");
+                insertUsers.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
+
+                DataTable dtUsers = new DataTable();
+                dtUsers.Columns.Add("UserName");
+                dtUsers.Columns.Add("Password");
+                dtUsers.Columns.Add("Role");
+                dtUsers.Columns.Add("Id");
+
+                //update
+                string updateQueryUsers = @"UPDATE Users SET UserName = @UserName, Password = @Password, Role = @Role WHERE Id = @Id";
+
+                SqlCommand updateUsers = new SqlCommand(updateQueryUsers, sqlConnection);
+                updateUsers.Parameters.Add("@UserName", SqlDbType.NVarChar, -1, "UserName");
+                updateUsers.Parameters.Add("@Password", SqlDbType.NVarChar, -1, "Password");
+                updateUsers.Parameters.Add("@Role", SqlDbType.NVarChar, -1, "Role");
+                updateUsers.Parameters.Add("@Id", SqlDbType.Int, 0, "Id");
+
+                DataTable dtUpdateUsers = new DataTable();
+                dtUpdateUsers.Columns.Add("UserName");
+                dtUpdateUsers.Columns.Add("Password");
+                dtUpdateUsers.Columns.Add("Role");
+                dtUpdateUsers.Columns.Add("Id");
+
+                foreach (User user in usersList)
+                {
+                   if(user.Id == 0)
+                    {
+                        dataAdapter.InsertCommand = insertUsers;
+                        DataRow dr = dtUsers.NewRow();
+                        dr["UserName"] = user.UserName;
+                        dr["Password"] = user.UserPassword;
+                        dr["Role"] = user.Role;
+                        dr["Id"] = user.Id;
+
+                        dtUsers.Rows.Add(dr);
+
+                        dataAdapter.Update(dtUsers);
+                    }
+
+                }
+
+
+
             }
-
-            sw.WriteLine("ROLES");
-
-            foreach (string item in roleList)
-            {
-                sw.WriteLine(item);
-            }
-
-            sw.Close();
         }
 
         private void btnAddRole_Click(object sender, RoutedEventArgs e)
