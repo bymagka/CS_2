@@ -29,6 +29,27 @@ namespace WpfApp.ServerASMX {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/GetRoles", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> GetRolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/AddRoles", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void AddRoles(string[] rolesArray);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/AddRoles", ReplyAction="*")]
+        System.Threading.Tasks.Task AddRolesAsync(string[] rolesArray);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/AddUsers", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void AddUsers(System.Data.DataTable dtUsers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/AddUsers", ReplyAction="*")]
+        System.Threading.Tasks.Task AddUsersAsync(System.Data.DataTable dtUsers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/UpdateUsers", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void UpdateUsers(System.Data.DataTable dtUsers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://serverASMX.org/UpdateUsers", ReplyAction="*")]
+        System.Threading.Tasks.Task UpdateUsersAsync(System.Data.DataTable dtUsers);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -72,6 +93,30 @@ namespace WpfApp.ServerASMX {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GetRolesAsync() {
             return base.Channel.GetRolesAsync();
+        }
+        
+        public void AddRoles(string[] rolesArray) {
+            base.Channel.AddRoles(rolesArray);
+        }
+        
+        public System.Threading.Tasks.Task AddRolesAsync(string[] rolesArray) {
+            return base.Channel.AddRolesAsync(rolesArray);
+        }
+        
+        public void AddUsers(System.Data.DataTable dtUsers) {
+            base.Channel.AddUsers(dtUsers);
+        }
+        
+        public System.Threading.Tasks.Task AddUsersAsync(System.Data.DataTable dtUsers) {
+            return base.Channel.AddUsersAsync(dtUsers);
+        }
+        
+        public void UpdateUsers(System.Data.DataTable dtUsers) {
+            base.Channel.UpdateUsers(dtUsers);
+        }
+        
+        public System.Threading.Tasks.Task UpdateUsersAsync(System.Data.DataTable dtUsers) {
+            return base.Channel.UpdateUsersAsync(dtUsers);
         }
     }
 }
