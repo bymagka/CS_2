@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApp.ServerASMX {
+namespace ServerWCF.ServerASMX {
     using System.Data;
     
     
@@ -53,12 +53,12 @@ namespace WpfApp.ServerASMX {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ServerSoapChannel : WpfApp.ServerASMX.ServerSoap, System.ServiceModel.IClientChannel {
+    public interface ServerSoapChannel : ServerWCF.ServerASMX.ServerSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServerSoapClient : System.ServiceModel.ClientBase<WpfApp.ServerASMX.ServerSoap>, WpfApp.ServerASMX.ServerSoap {
+    public partial class ServerSoapClient : System.ServiceModel.ClientBase<ServerWCF.ServerASMX.ServerSoap>, ServerWCF.ServerASMX.ServerSoap {
         
         public ServerSoapClient() {
         }

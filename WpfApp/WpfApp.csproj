@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Connected Services\ServerASMX\Reference.cs">
+    <Compile Include="Connected Services\Server\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -129,7 +129,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ServerASMX\ServerASMX.wsdl" />
+    <None Include="Connected Services\Server\Service.wsdl" />
+    <None Include="Connected Services\Server\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server\Service3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server\Service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server\WpfApp.Server.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -141,10 +159,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServerASMX\ServerASMX.disco" />
-    <None Include="Connected Services\ServerASMX\configuration91.svcinfo" />
-    <None Include="Connected Services\ServerASMX\configuration.svcinfo" />
-    <None Include="Connected Services\ServerASMX\Reference.svcmap">
+    <None Include="Connected Services\Server\Service.disco" />
+    <None Include="Connected Services\Server\configuration91.svcinfo" />
+    <None Include="Connected Services\Server\configuration.svcinfo" />
+    <None Include="Connected Services\Server\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -172,7 +190,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServerASMX\" />
+    <WCFMetadataStorage Include="Connected Services\Server\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

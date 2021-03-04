@@ -30,7 +30,7 @@ namespace WpfApp
 
         ObservableCollection<User> usersList = new ObservableCollection<User>();
         ObservableCollection<String> roleList = new ObservableCollection<String>();
-        ServerASMX.ServerSoapClient serviceClient = new ServerASMX.ServerSoapClient();
+        Server.ServiceClient serviceClient = new Server.ServiceClient();
 
 
         public MainWindow()
@@ -46,10 +46,10 @@ namespace WpfApp
             usersList.Clear();
             roleList.Clear();
 
+
             var dt = serviceClient.GetUsers();
-          
             var roles = serviceClient.GetRoles();
-            ////получаем пользователей
+            ////Load users
             foreach (DataRow row in dt.Rows)
             {
                 User existingUser = new User { UserName = row["UserName"].ToString(), UserPassword = row["Password"].ToString(), Role = row["Role"].ToString(), Id = int.Parse(row["Id"].ToString()) };
@@ -58,20 +58,14 @@ namespace WpfApp
 
             }
 
-
-
-
             foreach (DataRow row in roles?.Rows)
             {
                 roleList.Add(row["Name"].ToString());
                 ExistingRoles.Add(row["Name"].ToString());
             }
 
-            //}
+
             userDataGrid.ItemsSource = usersList;
-
-
-
 
         }
 
@@ -90,17 +84,19 @@ namespace WpfApp
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var addingRoles = roleList.Select(x => x).Where(x => ExistingRoles.Find(y => y == x) == null);
-            serviceClient.AddRoles(addingRoles.ToArray());
+            var addingRoles = roleList.Select(x => x)
+                                      .Where(x => ExistingRoles.Find(y => y == x) == null)
+                                      .ToArray();
+
+            serviceClient.AddRoles(addingRoles);
 
             foreach(var item in addingRoles)
             {
                 ExistingRoles.Add(item);
             }
 
-            //    }
 
-            //    //users
+            //users
             DataTable dtUsers = new DataTable("AddRoles");
             dtUsers.Columns.Add("UserName");
             dtUsers.Columns.Add("Password");
